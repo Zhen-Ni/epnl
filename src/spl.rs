@@ -40,7 +40,7 @@ impl From<TOBStorage> for SPL {
 }
 
 impl From<TOBArray> for SPL {
-    /// Converts a TOB storage object into a TOB object.
+    /// Converts a TOBArray object into a TOB object.
     ///
     /// # Examples
     /// ```
@@ -51,6 +51,7 @@ impl From<TOBArray> for SPL {
         SPL { storage: TOBStorage::from(value)}
     }
 }
+
 
 impl From<&[TOBScalarType]> for SPL {
     /// Converts a TOB storage object into a TOB object.

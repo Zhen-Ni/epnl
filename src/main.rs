@@ -1,14 +1,15 @@
 use std::io::{BufReader, BufRead, Result};
 
-use epnl::{PNL, SPL};
+use epnl::{PNL, SPL, PNLT};
 
 fn main() {
     let spls = read_file("input.txt").expect("unable to read file");
     let spls: Vec<_> = spls.iter().map(|spl| SPL::from(&spl[..])).collect();
     println!("{spls:?}");
-    let result = PNL::from(spls[1].clone());
-    println!("{result:?}");       
-    
+    let pnl = PNL::from(spls[1].clone());
+    println!("{pnl:?}");   
+    let pnlt = PNLT::from(spls[1].clone());
+    println!("{pnlt:?}");   
 }
 
 fn read_file(filename: &str) -> Result<Vec<Vec<f64>>> {
@@ -22,5 +23,3 @@ fn process_line(line: String) -> Option<Vec<f64>> {
         .filter_map(|x| {x.parse::<f64>().ok()}).collect();
     if data.is_empty() {None} else {Some(data)}
 }
-
-

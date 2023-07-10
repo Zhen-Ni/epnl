@@ -73,11 +73,13 @@ impl DerefMut for TOBStorage {
 impl From<TOBArray> for TOBStorage {
     /// Converts an array into a TOB object.
     fn from(value: TOBArray) -> TOBStorage {
-        TOBStorage {storage: value.try_into().expect(&format!(
-            "Expect a Vec of length {}, got length {} instead.",
-            TOBSIZE, value.len()))}
+        TOBStorage::from(&value[..])
+        // TOBStorage {storage: value.try_into().expect(&format!(
+        //     "Expect a Vec of length {}, got length {} instead.",
+        //     TOBSIZE, value.len()))}
     }
 }
+
 
 impl From<&[TOBScalarType]> for TOBStorage {
     /// Converts an array into a TOB object.

@@ -1,6 +1,7 @@
 use std::ops::{Deref, DerefMut};
 use crate::{Noy, TOBScalarType, SPL};
 
+
 #[derive(Debug, Clone)]
 pub struct PNL {
     storage: TOBScalarType
@@ -38,7 +39,8 @@ impl From<SPL> for PNL {
         PNL::from(Noy::from(value))
     }
 }
-    
+
+
 impl Deref for PNL {
     type Target = TOBScalarType;
     fn deref(&self) -> &Self::Target {
